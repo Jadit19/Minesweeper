@@ -54,6 +54,9 @@ section.game{
     background: darkgray;
     border: 1px solid white;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .box:hover{
     background: rgb(134, 134, 134);
@@ -83,12 +86,4 @@ section.game{
     flex-direction: column;
     padding: 3px;
     padding-left: 10px;
-}
-
-ul{
-    padding-top: 30px;
-    padding-left: 20px;
-}
-ul li{
-    padding-top: 8px;
 }
