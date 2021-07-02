@@ -56,7 +56,7 @@ function logMouseButton(event, i){
                     divs[susPosition[j]].style.background = "red";
                 }
                 setTimeout(() => {
-                    alert('You Loose, Try Again..');
+                    alert('You Lose, Try Again..');
                     location.reload();
                 }, 200);
             } else {
