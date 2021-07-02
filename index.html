@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Minesweeper</title>
-        <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" href="./public/style.css">
         <!-- <script>
             function startTime() {
                 var today = new Date();
@@ -31,9 +31,12 @@
                 <h3>This Minesweeper Field has 10 mines generated absolutely randomly..</h3><br>
                 <div class="information">
                     <!-- <h3>Time Elapsed:&nbsp;&nbsp;<span id="txt"></span></h3> -->
-                    <h3 style="justify-content: flex-end; position: absolute; right: 0px;">Score: <span id="score">0</span></h3>
+                    <div style="justify-content: flex-end; position: absolute; right: 0px;">
+                        <h3>Score: <span id="score">0</span></h3>
+                        <h3>Mines Identified: <span id="minesId">0</span></h3>
+                    </div>
                 </div>
-                <br><br>
+                <br><br><br><br>
                 <section class="game">    
                 </section>
             </div>
@@ -87,6 +90,6 @@
                 </h3>
             </div>
         </div>
-        <script src="./frontend.js"></script>
+        <script src="./public/frontend.js"></script>
     </body>
     </html>
