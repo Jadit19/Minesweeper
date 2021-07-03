@@ -6,23 +6,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Minesweeper</title>
         <link rel="stylesheet" href="./public/style.css">
-        <!-- <script>
-            function startTime() {
-                var today = new Date();
-                var h = today.getHours();
-                var m = today.getMinutes();
-                var s = today.getSeconds();
-                m = checkTime(m);
-                s = checkTime(s);
-                document.getElementById('txt').innerHTML =
-                h + ":" + m + ":" + s;
-                var t = setTimeout(startTime, 500);
-            }
-            function checkTime(i) {
-                if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
-                return i;
-            }
-        </script> -->
     </head>
     <body onload="init()">
         <div class="wrapper">
@@ -30,13 +13,13 @@
                 <h1>MINESWEEPER</h1>
                 <h3>This Minesweeper Field has 10 mines generated absolutely randomly..</h3><br>
                 <div class="information">
-                    <!-- <h3>Time Elapsed:&nbsp;&nbsp;<span id="txt"></span></h3> -->
+                    <h3>Time Elapsed:&nbsp;&nbsp;<span id="stopwatch">00:00:00</span></h3>
                     <div style="justify-content: flex-end; position: absolute; right: 0px;">
                         <h3>Score: <span id="score">0 pts</span></h3>
                         <h3>Mines Identified: <span id="minesId">0</span></h3>
                     </div>
                 </div>
-                <br><br><br><br>
+                <br><br><br>
                 <section class="game">    
                 </section>
             </div>
@@ -83,8 +66,9 @@
                     <div class="minHand" id="minHand"></div>
                 </div>
                 <div class="btnContainer">
-                    <button style="margin-right: 15px;" onclick="startFunction()" id="startBtn">Start</button>
-                    <button style="margin-left: 15px;" onclick="stopFunction()" id="stopBtn">Stop</button>
+                    <button style="margin-right: 10px;" onclick="startFunction()" id="startBtn">Start</button>
+                    <button style="margin-left: 10px;margin-right: 10px;" onclick="stopFunction()" id="stopBtn">Stop</button>
+                    <button style="margin-left: 10px;" onclick="resetFunction()" id="resetBtn">Reset</button>
                 </div>
             </div>
         </div>

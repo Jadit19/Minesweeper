@@ -206,3 +206,6 @@ button{
     color: white;
     background: red;
 }
+#resetBtn:hover{
+    background: cyan;
+}

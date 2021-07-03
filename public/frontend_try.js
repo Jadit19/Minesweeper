@@ -8,6 +8,10 @@ var mines = 0;
 var currentScore = 0;
 var theta;
 var darkColor = "rgb(121, 121, 121)";
+var hr = 0;
+var min = 0;
+var sec = 0;
+var stopTime = true;
 var divs = new Array(100);
 var clockDivs = new Array(12);
 var sus = new Array(100);
@@ -22,6 +26,7 @@ var secHand = document.getElementById('secHand');
 var minHand = document.getElementById('minHand');
 var clockBefore = document.getElementById('topOne');
 var clockAfter = document.getElementById('topTwo');
+const timer = document.getElementById('stopwatch');
 const tileBGColor = ["white", "rgb(0, 255, 0)", "yellow", "orange", "red", "darkred"];
 
 for (i=0; i<100; i++){
@@ -69,7 +74,11 @@ for (i=0; i<12; i++){
 }
 
 function startFunction(){
-    secHand.style.animation = "clockHandAnimation 60s steps(60, end) infinite forwards";
+    if (stopTime == true) {
+        stopTime = false;
+        timerCycle();
+    }
+    secHand.style.animation = "clockHandAnimation 60s steps(3600, end) infinite forwards";
     minHand.style.animation = "clockHandAnimation 3600s infinite forwards";
     clockBefore.style.animation = "clickAnimation 0.2s";
     clockAfter.style.animation = "clickAnimation 0.2s";
@@ -82,6 +91,9 @@ function startFunction(){
     }, 200);
 }
 function stopFunction(){
+    if (stopTime == false) {
+        stopTime = true;
+    }
     clockBefore.style.animation = "clickAnimation 0.2s";
     clockAfter.style.animation = "clickAnimation 0.2s";
     secHand.style.animationPlayState = 'paused';
@@ -93,6 +105,18 @@ function stopFunction(){
         clockBefore.style.animation = "none";
         clockAfter.style.animation = "none";
     }, 200);
+}
+function resetFunction(){
+    for (j=0; j< 10; j++){
+        divs[susPosition[j]].style.background = "red";
+    }
+    clockBefore.style.animation = "clickAnimation 0.2s";
+    clockAfter.style.animation = "clickAnimation 0.2s";
+    secHand.style.animationPlayState = 'paused';
+    minHand.style.animationPlayState = 'paused';
+    setTimeout(() => {
+        location.reload();
+    }, 1000);
 }
 
 function logMouseButton(event, i){
@@ -158,5 +182,39 @@ function logMouseButton(event, i){
             default:
                 alert('Click using LMB or RMB only!!');
         }
+    }
+}
+  
+function timerCycle() {
+    if (stopTime == false) {
+        sec = parseInt(sec);
+        min = parseInt(min);
+        hr = parseInt(hr);
+    
+        sec = sec + 1;
+    
+        if (sec == 60) {
+            min = min + 1;
+            sec = 0;
+        }
+        if (min == 60) {
+            hr = hr + 1;
+            min = 0;
+            sec = 0;
+        }
+    
+        if (sec < 10 || sec == 0) {
+            sec = '0' + sec;
+        }
+        if (min < 10 || min == 0) {
+            min = '0' + min;
+        }
+        if (hr < 10 || hr == 0) {
+            hr = '0' + hr;
+        }
+    
+        timer.innerHTML = hr + ':' + min + ':' + sec;
+    
+        setTimeout("timerCycle()", 1000);
     }
 }
