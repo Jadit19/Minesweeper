@@ -112,6 +112,10 @@ function logMouseButton(event, i){
                     for (j=0; j< 10; j++){
                         divs[susPosition[j]].style.background = "red";
                     }
+                    clockBefore.style.animation = "clickAnimation 0.2s";
+                    clockAfter.style.animation = "clickAnimation 0.2s";
+                    secHand.style.animationPlayState = 'paused';
+                    minHand.style.animationPlayState = 'paused';
                     setTimeout(() => {
                         alert('You Lose, Try Again..');
                         location.reload();
