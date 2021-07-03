@@ -6,8 +6,10 @@ var i=0, j=0;
 var randomVar;
 var mines = 0;
 var currentScore = 0;
+var theta;
 var darkColor = "rgb(121, 121, 121)";
 var divs = new Array(100);
+var clockDivs = new Array(12);
 var sus = new Array(100);
 var boxNumber = new Array(100);
 var isClicked = new Array(100);
@@ -16,12 +18,15 @@ var susPosition = new Array(10);
 var mainSection = document.querySelector('section');
 var score = document.getElementById('score');
 var minesId = document.getElementById('minesId');
+var secHand = document.getElementById('secHand');
+var minHand = document.getElementById('minHand');
+var clockBefore = document.getElementById('topOne');
+var clockAfter = document.getElementById('topTwo');
 const tileBGColor = ["white", "rgb(0, 255, 0)", "yellow", "orange", "red", "darkred"];
 
 for (i=0; i<100; i++){
     divs[i] = document.createElement('div');
     divs[i].setAttribute('class', 'box');
-    divs[i].setAttribute('onmousedown', `logMouseButton(event, ${i})`);
     sus[i] = 0;
     boxNumber[i] = 0;
     isClicked[i] = 0;
@@ -38,7 +43,7 @@ for (i=0; i<10; i++){
     }
     sus[randomVar] = 1;
     susPosition[i] = randomVar;
-
+    
     boxNumber[randomVar] = "-1000";
     if (randomVar%10 != 9){
         boxNumber[randomVar-9]++;
@@ -53,9 +58,49 @@ for (i=0; i<10; i++){
     boxNumber[randomVar-10]++;
     boxNumber[randomVar+10]++;
 }
+for (i=0; i<12; i++){
+    theta = (i*30) * Math.PI / 180;
+    clockDivs[i] = document.createElement('div');
+    clockDivs[i].setAttribute('class', 'mark');
+    clockDivs[i].style.transform = `translate(${100 * Math.sin(theta)}px, ${-100 * Math.cos(theta)}px) rotateZ(${(i*30)}deg)` //
+}
+for (i=0; i<12; i++){
+    document.getElementById('clock').appendChild(clockDivs[i]);
+}
+
+function startFunction(){
+    secHand.style.animation = "clockHandAnimation 60s steps(60, end) infinite forwards";
+    minHand.style.animation = "clockHandAnimation 3600s infinite forwards";
+    clockBefore.style.animation = "clickAnimation 0.2s";
+    clockAfter.style.animation = "clickAnimation 0.2s";
+    for (i=0; i<100; i++){
+        divs[i].setAttribute('onmousedown', `logMouseButton(event, ${i})`);
+    }
+    setTimeout(() => {
+        clockBefore.style.animation = "none";
+        clockAfter.style.animation = "none";
+    }, 200);
+}
+function stopFunction(){
+    clockBefore.style.animation = "clickAnimation 0.2s";
+    clockAfter.style.animation = "clickAnimation 0.2s";
+    secHand.style.animationPlayState = 'paused';
+    minHand.style.animationPlayState = 'paused';
+    for (i=0; i<100; i++){
+        divs[i].setAttribute('onmousedown', '');
+    }
+    setTimeout(() => {
+        clockBefore.style.animation = "none";
+        clockAfter.style.animation = "none";
+    }, 200);
+}
 
 function logMouseButton(event, i){
     if (currentScore==89 && sus[i]==0){
+        clockBefore.style.animation = "clickAnimation 0.2s";
+        clockAfter.style.animation = "clickAnimation 0.2s";
+        secHand.style.animationPlayState = 'paused';
+        minHand.style.animationPlayState = 'paused';
         setTimeout(() => {
             alert('Congratulations! You have successfully defeated Minesweeper!!');
             location.reload();

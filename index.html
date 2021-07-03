@@ -63,15 +63,29 @@
                             <b>MINE</b>
                             <i>Use LMB to activate, points = -infinity</i>
                         </div>
+                    </div><br>
+                    <div style="text-align: center; font-weight: bold;">
+                        When you are ready, click on the start button..
                     </div>
                 </div>
-                <br><br><hr><br><br>
+                <br><br><hr><br>
                 <h1 style="text-decoration: none;">
                     ALL THE BEST!!
                 </h1>
-                <br><br><hr><br><br>
-                <h1 style="text-decoration: none;">LEADERBOARD</h1>
-                <h3>This feature is in development.. Kindly check back at a later time :)</h3>
+                <hr><br><br>
+                <!-- <h1 style="text-decoration: none;">LEADERBOARD</h1>
+                <h3>This feature is in development.. Kindly check back at a later time :)</h3> -->
+                <div class="clock" id="clock">
+                    <div id="topOne"></div>
+                    <div id="topTwo"></div>               
+                    <div class="middleCircle"></div>
+                    <div class="secHand" id="secHand"></div>
+                    <div class="minHand" id="minHand"></div>
+                </div>
+                <div class="btnContainer">
+                    <button style="margin-right: 15px;" onclick="startFunction()" id="startBtn">Start</button>
+                    <button style="margin-left: 15px;" onclick="stopFunction()" id="stopBtn">Stop</button>
+                </div>
             </div>
         </div>
         <script src="./public/frontend_try.js"></script>
