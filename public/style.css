@@ -91,8 +91,8 @@ section.game{
 .clock{
     width: 250px;
     height: 250px;
-    background: white;
-    border: 15px solid brown;
+    background-image: radial-gradient(white 50%, #666 90%);
+    border: 15px solid rgb(131, 34, 34);
     border-radius: 50%;
     position: relative;
     margin-left: auto;
@@ -107,7 +107,7 @@ section.game{
     /* transform: translate(-50%, -50%); */
     width: 60px;
     height: 20px;
-    background: chocolate;
+    background: rgb(0, 63, 0);
 }
 #topTwo{
     content: '';
@@ -117,7 +117,7 @@ section.game{
     /* transform: translate(-50%, -50%); */
     width: 30px;
     height: 30px;
-    background: chocolate;
+    background: darkgreen;
     z-index: -1;
 }
 
