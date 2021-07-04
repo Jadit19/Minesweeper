@@ -73,6 +73,13 @@ for (i=0; i<12; i++){
     document.getElementById('clock').appendChild(clockDivs[i]);
 }
 
+function animationFunc(){
+    clockBefore.style.animation = "clickAnimation 0.2s";
+    clockAfter.style.animation = "clickAnimation 0.2s";
+    secHand.style.animationPlayState = 'paused';
+    minHand.style.animationPlayState = 'paused';
+}
+
 function startFunction(){
     if (stopTime == true) {
         stopTime = false;
@@ -94,10 +101,7 @@ function stopFunction(){
     if (stopTime == false) {
         stopTime = true;
     }
-    clockBefore.style.animation = "clickAnimation 0.2s";
-    clockAfter.style.animation = "clickAnimation 0.2s";
-    secHand.style.animationPlayState = 'paused';
-    minHand.style.animationPlayState = 'paused';
+    animationFunc();
     for (i=0; i<100; i++){
         divs[i].setAttribute('onmousedown', '');
     }
@@ -110,10 +114,7 @@ function resetFunction(){
     for (j=0; j< 10; j++){
         divs[susPosition[j]].style.background = "red";
     }
-    clockBefore.style.animation = "clickAnimation 0.2s";
-    clockAfter.style.animation = "clickAnimation 0.2s";
-    secHand.style.animationPlayState = 'paused';
-    minHand.style.animationPlayState = 'paused';
+    animationFunc();
     setTimeout(() => {
         location.reload();
     }, 1000);
@@ -121,10 +122,7 @@ function resetFunction(){
 
 function logMouseButton(event, i){
     if (currentScore==89 && sus[i]==0){
-        clockBefore.style.animation = "clickAnimation 0.2s";
-        clockAfter.style.animation = "clickAnimation 0.2s";
-        secHand.style.animationPlayState = 'paused';
-        minHand.style.animationPlayState = 'paused';
+        animationFunc();
         setTimeout(() => {
             alert('Congratulations! You have successfully defeated Minesweeper!!');
             location.reload();
@@ -136,10 +134,7 @@ function logMouseButton(event, i){
                     for (j=0; j< 10; j++){
                         divs[susPosition[j]].style.background = "red";
                     }
-                    clockBefore.style.animation = "clickAnimation 0.2s";
-                    clockAfter.style.animation = "clickAnimation 0.2s";
-                    secHand.style.animationPlayState = 'paused';
-                    minHand.style.animationPlayState = 'paused';
+                    animationFunc();
                     setTimeout(() => {
                         alert('You Lose, Try Again..');
                         location.reload();
@@ -218,3 +213,19 @@ function timerCycle() {
         setTimeout("timerCycle()", 1000);
     }
 }
+
+// ==================== CHEAT CODE ;) ====================
+window.addEventListener('keydown', function (e) {
+    if (e.key == 'c'){
+        for (j=0; j< 10; j++){
+            divs[susPosition[j]].style.background = "green";
+        }
+        animationFunc();
+        score.innerHTML = "90 pts";
+        minesId.innerHTML = "&#128527;";
+        setTimeout(() => {
+            alert('Congratulations! You have successfully defeated Minesweeper!!');
+            location.reload();
+        }, 200);
+    }
+}, false);
