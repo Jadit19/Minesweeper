@@ -232,9 +232,11 @@ window.addEventListener('keydown', function (e) {
 
 function zoomIn(){
     document.querySelector('.wrapper').style.zoom = 0.8;
+    document.querySelector('.wrapper').style.marginTop = "80px";
     document.getElementById('zoomIn').style.left = "calc(50% - 82px)";
 }
 function zoomOut(){
     document.querySelector('.wrapper').style.zoom = 1;
+    document.getElementById('wrapper').style.marginTop = "0px";
     document.getElementById('zoomIn').style.left = "calc(50% - 84px)";
 }

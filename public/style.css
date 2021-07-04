@@ -20,7 +20,12 @@ body{
     justify-content: center;
     align-items: center;
     font-size: 1rem;
-    zoom: 1;
+}
+@media (max-height: 1000px){
+    .wrapper{
+        zoom: 0.8;
+        margin-top: 80px;
+    }
 }
 
 .mag{
@@ -28,14 +33,11 @@ body{
     padding: 10px;
     height: 800px;
     display: flex;
-    /* background-color: red; */
     position: relative;
 }
 
 .mag p{
     position: absolute;
-    /* width: 60px; */
-    /* height: 20px; */
     transform: rotateZ(-90deg);
     background-color: white;
     color: black;
@@ -52,7 +54,7 @@ body{
 }
 .mag p:nth-of-type(2){
     top: calc(50% + 80px);
-    left: calc(50% - 84px);
+    left: calc(50% - 82px);
 }
 .fas{
     margin-right: 10px;
