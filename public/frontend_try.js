@@ -229,3 +229,12 @@ window.addEventListener('keydown', function (e) {
         }, 200);
     }
 }, false);
+
+function zoomIn(){
+    document.querySelector('.wrapper').style.zoom = 0.8;
+    document.getElementById('zoomIn').style.left = "calc(50% - 82px)";
+}
+function zoomOut(){
+    document.querySelector('.wrapper').style.zoom = 1;
+    document.getElementById('zoomIn').style.left = "calc(50% - 84px)";
+}

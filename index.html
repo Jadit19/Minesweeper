@@ -6,9 +6,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Minesweeper</title>
         <link rel="stylesheet" href="./public/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     </head>
     <body onload="init()">
         <div class="wrapper">
+            <div class="mag">
+                <p onclick="zoomOut()"><i class="fas fa-search-plus"></i>Increase</p>
+                <p onclick="zoomIn()" id="zoomIn"><i class="fas fa-search-minus"></i>Decrease</p>
+            </div>
             <div class="mainContainer">
                 <h1>MINESWEEPER</h1>
                 <h3>This Minesweeper Field has 10 mines generated absolutely randomly..</h3><br>
