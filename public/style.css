@@ -19,6 +19,7 @@ body{
     height: 100vh;
     justify-content: center;
     align-items: center;
+    zoom: 0.8;
 }
 
 .mainContainer{
